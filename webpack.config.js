@@ -8,10 +8,20 @@ const autoprefixer = require('autoprefixer');
 
 
 module.exports = {
-    entry: {main: './src/js/app.js'},
+    /*context: __dirname + "/src",*/ /*Пошук вхідних файлів буде здійснюватися із даної папки*/
+
+   /* devServer: {
+        host: 'localhost',
+        port: 8080,
+        contentBase: __dirname + '/dist'
+    },*/
+    devtool: "source-map",
+    entry: {
+        main: './src/js/app.js'
+    },
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'app.main.js'
+        filename: 'app.[name].js'
     },
     module: {
         rules: [
@@ -39,7 +49,7 @@ module.exports = {
                             ],
                             sourceMap: true
                         }
-                    }
+                    },
                 ]
             },
         ]
