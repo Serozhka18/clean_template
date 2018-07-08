@@ -1,5 +1,5 @@
 body {
-  background: red; }
-  body p {
-    color: aqua; }
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex; }
 

@@ -1,8 +1,10 @@
 const path = require('path');
+
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const autoprefixer = require('autoprefixer');
 
 
 module.exports = {
@@ -13,7 +15,7 @@ module.exports = {
     },
     module: {
         rules: [
-            {
+                        {
                 test: /\.js$/,
                 exclude: /node_modules/,
                 use: {
@@ -23,8 +25,25 @@ module.exports = {
             {
                 test: /\.scss$/,
                 use:  [  'style-loader', MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
-            }
+            },
+            {
+                test: /\.scss$/,
+                use: [
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            plugins: [
+                                autoprefixer({
+                                    browsers:['ie >= 8', 'last 4 version']
+                                })
+                            ],
+                            sourceMap: true
+                        }
+                    }
+                ]
+            },
         ]
+
     },
     plugins: [
         new CopyWebpackPlugin([

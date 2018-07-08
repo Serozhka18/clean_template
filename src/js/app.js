@@ -1,5 +1,7 @@
 /*import '../css/style.css';*/
 import '../scss/style.scss';
 
-console.log("hello");
+let sum = () => a + b ;
+
+console.log(sum(55,10));
 
